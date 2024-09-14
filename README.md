@@ -2,26 +2,55 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
 
-## Development server
+## Overview
+This project explores how Angular performs change detection and various strategies to optimize it. The following concepts are covered:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Understanding How Angular Performs Change Detection
+- Change Detection During Development: ExpressionChangedAfterChecked Errors
+- Avoiding Zone Pollution (`runOutsideAngular`, `NgZone`)
+- Using the OnPush Strategy
+- Working with OnPush & Signals
+- Using Signals for Sharing Data Across Components with OnPush
+- Going Zoneless (Removing polyfills: `zone.js` in `angular.json` & Adding provideExperimentalZonelessChangeDetection in the `appConfig` Providers)
 
-## Code scaffolding
+## Table of Contents
+1. Understanding How Angular Performs Change Detection
+2. Change Detection During Development: ExpressionChangedAfterChecked Errors
+3. Avoiding Zone Pollution (`runOutsideAngular`, `NgZone`)
+4. Using the OnPush Strategy
+5. Working with OnPush & Signals
+6. Using Signals for Sharing Data Across Components with OnPush
+7. Going Zoneless
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Understanding How Angular Performs Change Detection
+Angular's change detection mechanism is responsible for updating the view whenever the application state changes. It uses a tree of components and checks each component to see if its data has changed.
 
-## Build
+## Change Detection During Development: ExpressionChangedAfterChecked Errors
+During development, you might encounter `ExpressionChangedAfterChecked` errors. These occur when Angular detects a change in the application state after it has already checked the component's view.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Avoiding Zone Pollution (`runOutsideAngular`, `NgZone`)
+Zone pollution can lead to unnecessary change detection cycles. Using `runOutsideAngular` and `NgZone` can help avoid this by running certain code outside Angular's zone.
 
-## Running unit tests
+## Using the OnPush Strategy
+The OnPush change detection strategy can be used to optimize performance by checking the component only when its input properties change.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Working with OnPush & Signals
+Combining the OnPush strategy with signals can further optimize change detection by ensuring that only the necessary components are checked.
 
-## Running end-to-end tests
+## Using Signals for Sharing Data Across Components with OnPush
+Signals can be used to share data across components while using the OnPush strategy, ensuring efficient and predictable change detection.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Going Zoneless
+Removing `zone.js` polyfills from `angular.json` and adding provideExperimentalZonelessChangeDetection in the `appConfig` providers can help in achieving a zoneless Angular application, further optimizing performance.
 
-## Further help
+## Conclusion
+This project provides a comprehensive guide to understanding and optimizing Angular's change detection mechanism, covering essential concepts and best practices.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Getting Started
+To get started with this project, clone the repository and install the dependencies:
+
+```bash
+git clone <repository-url>
+cd <project-directory>
+npm install
+
